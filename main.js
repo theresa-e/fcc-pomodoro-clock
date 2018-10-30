@@ -1,9 +1,13 @@
 $(document).ready(function () {
-
-    var 
+    // Global vars
+    var defaultTimeMin = 25;
+    $('#current-min').text(defaultTimeMin);
+    var defaultTimeSec = 00;
+    $('#current-sec').text(defaultTimeSec)
+    var defaultBreak = 5;
     // When user clicks add time button
-    $('#increase-time').click(function () {
+    // $('#decrease-time').click(function () {
 
-    })
+    // })
 
 });

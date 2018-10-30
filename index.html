@@ -7,7 +7,6 @@
         <title>Pomodoro Clock</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-        <script src="main.js"></script>
     </head>
 
     <body>
@@ -15,12 +14,24 @@
             <h1>Pomodoro Clock</h1>
             <a href="#" id="decrease-time"><button>- 5</button></a>
             <a href="#" id="increase-time"><button>+ 5</button></a>
-            <h3 id="current-time">25:00</h3>
+            <div class="time">
+                <span id="current-min"></span>
+                    <span>:</span>
+                <span id="current-sec"></span>
+            </div>
             <a href="#" id="start-time"><button>start</button></a>
             <a href="#" id="stop-time"><button>stop</button></a>
             <a href="#" id="reset-time"><button>reset</button></a>
+            <div class="break">
+                <h1>Break</h1>
+                <a href="#" id="decrease-break"><button>- 5</button></a>
+                <a href="#" id="increase-break"><button>+ 5</button></a>
+                <h3 id="break-time">5:00</h3>
+                <a href="#" id="start-break"><button>start break</button></a>
+            </div>
         </section>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="main.js"></script>
 
     </html>
