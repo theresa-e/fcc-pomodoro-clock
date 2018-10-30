@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+    margin: 0 auto;
+    font-family: "Quicksand";
+}
+
+.timer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+#current-time {
+    font-size: 5rem;
+}
