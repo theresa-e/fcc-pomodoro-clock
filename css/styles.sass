@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand')
+$font: "Quicksand"
+$background-col: #afb1bf
+$body-gradient: linear-gradient(298deg, rgba(134,122,144,1) 0%, rgba(106,132,182,1) 100%)
+$control-col: #80828a
+$btn-col: #d4cfc5
+body
+    margin: 0 auto
+    font-family: $font
+    background-image: $body-gradient
+    height: 100vh
+*
+    margin: 0
+    padding: 0
+
+.center 
+    margin: 0 auto
+    text-align: center
+
+.timer
+    background-color: $background-col
+    width: 30%
+    padding: 3%
+    margin-top: 10px
+    height: 300px
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    h1
+        font-size: 1.5rem
+        color: #000
+
+.time-text
+    font-size: 3rem
+
+.break-text
+    font-size: 4rem
+
+.btn
+    background-color: $btn-col
+    padding: 3px 5px
+
+.controls
+    display: flex
+    justify-content: space-around
+    margin-top: 35px
+    div        
+        background-color: $control-col
+        width: 100px
+        height: 100px
+        padding: 3px
+        border-radius: 50%

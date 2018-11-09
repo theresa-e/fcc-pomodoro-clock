@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Pomodoro Clock</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pomodoro Clock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
 
-    <body>
-        <section class="timer center">
-            <h1>Pomodoro Clock</h1>
-            <div class="time">
-                <h1>Timer</h1>
-                <div class="time-text">
-                    <a href="#" id="decrease-time"><button class="btn">- 5</button></a>
-                    <span id="current-min">5</span>
-                    <span>:</span>
-                    <span id="current-sec">00</span>
-                    <a href="#" id="increase-time"><button class="btn">+ 5</button></a>
-                </div>
-                <section class="controls">
-                    <a href="#" id="start-time"><button class="btn start"> start</button></a>
-                    
-                    <a href="#" id="pause-time"><button class="btn stop">pause</button></a>
-                    <a href="#" id="reset-time"><button class="btn reset">reset</button></a>
-                </section>
+<body>
+    <section class="timer center">
+        <h1>Pomodoro Clock</h1>
+        <!-- Countdown display -->
+        <div class="time">
+            <div class="time-text">
+                <span id="current-min">5</span>
+                <span>:</span>
+                <span id="current-sec">00</span>
             </div>
-            <div class="break">
-                <h1>Break</h1>
-                <a href="#" id="decrease-break"><button class="btn">- 5</button></a>
-                <span class="break-text" id="break-time">5</span>
-                <a href="#" id="increase-break"><button class="btn">+ 5</button></a>
-                <br/>
-                <a href="#" id="start-break"><button class="btn">start break</button></a>
+            <a href="#" id="start-time"><button class="btn start"> start</button></a>
+            <a href="#" id="pause-time"><button class="btn stop">pause</button></a>
+            <a href="#" id="reset-time"><button class="btn reset">reset</button></a>
+
+
+
+        </div>
+        <section class="controls">
+            <!-- Button controls -->
+            <div class="pomodoro-time">
+                <p>Clock</p>
+                <p>25</p>
+                <a href="#" id="decrease-time"><button class="btn">-</button></a>
+                <a href="#" id="increase-time"><button class="btn">+</button></a>
+            </div>
+            <div class="break-time">
+                <p>Break</p>
+                <p>5</p>
+                <a href="#" id="decrease-time"><button class="btn">-</button></a>
+                <a href="#" id="increase-time"><button class="btn">+</button></a>
             </div>
         </section>
-    </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="main.js"></script>
+    </section>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="main.js"></script>
 
-    </html>
+</html>

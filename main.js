@@ -42,8 +42,6 @@ $(document).ready(function () {
             }
             updateSeconds(currentSec);
         }, 1000)
-
-
     });
 
     // ------- Reset button will set time to default 20 ------
