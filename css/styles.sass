@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand')
 $font: "Quicksand"
-$background-col: #afb1bf
-$body-gradient: linear-gradient(298deg, rgba(134,122,144,1) 0%, rgba(106,132,182,1) 100%)
-$control-col: #80828a
+$background-col: #d0a3b1
+$body-gradient: linear-gradient(298deg, #D0B8AC 0%, #EFE5DC 100%)
+$control-col: #dcbfc1
 $btn-col: #d4cfc5
+$title-col: #802f49
 body
     margin: 0 auto
     font-family: $font
     background-image: $body-gradient
     height: 100vh
+    display: flex
+    align-items: center
 *
     margin: 0
     padding: 0
@@ -19,27 +22,45 @@ body
 
 .timer
     background-color: $background-col
-    width: 30%
+    width: 50%
     padding: 3%
     margin-top: 10px
-    height: 300px
+    height: 425px
     display: flex
     flex-direction: column
     justify-content: space-evenly
+    border-radius: 15px
     h1
         font-size: 1.5rem
-        color: #000
+        color: $title-col
+        text-transform: uppercase
+        letter-spacing: 3px
+        font-weight: bold
+
+.timer-title
+    min-height: 40px
 
 .time-text
-    font-size: 3rem
+    font-size: 8rem
 
 .break-text
     font-size: 4rem
 
 .btn
     background-color: $btn-col
-    padding: 3px 5px
+    padding: 8px
+    margin: 3px
+    font-size: .75rem
+    text-transform: uppercase
+    border: none
+    letter-spacing: 2px
 
+.start
+    background-color: #cc9477
+    color: #763d1d
+    &:hover
+        background: #d7a287
+        color: #763d1d
 .controls
     display: flex
     justify-content: space-around
@@ -49,4 +70,6 @@ body
         width: 100px
         height: 100px
         padding: 3px
-        border-radius: 50%
+
+.clock-controls
+    min-height: 30px

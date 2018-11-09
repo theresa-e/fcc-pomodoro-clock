@@ -1,70 +1,99 @@
 $(document).ready(function () {
-    // ------ Global vars -----
+    var breakTime = parseInt($('#break-time').html());
+    var clockTime = parseInt($('#clock-time').html());
+    var minutes = clockTime;
+    var seconds = 0;
+    var isPaused = false;
+    var timerInProgress = false;
 
-    var defaultBreak = 5;
-    var currentMin = parseInt($('#current-min').html()); // Get string val and parse.
-    var currentSec = parseInt($('#current-sec').html());
-    var currentBreak = parseInt($('#break-time').html());
-    console.log(currentMin)
+    // ---- Hide elemenets on load -----
+    $('#reset-btn').hide();
+    $('#pause-btn').hide();
+    $('#continue-btn').hide();
 
-    // ------- Hide reset until timer starts ------ 
-    $('#reset-time').hide();
-    $('#pause-time').hide();
-
-    // ------- Increase / decrease POMODORO TIME -----
-    $('#decrease-time').click(function () {
-        // Timer cannot be negative seconds
-        if (currentMin > 0) {
-            currentMin -= 5;
-            console.log(currentMin);
-            $('#current-min').html(currentMin);
+    // ---- Increase/decrease breaktime  -----
+    $('#decrease-break').click(function () {
+        if (breakTime > 0) {
+            breakTime -= 1;
+            console.log('break decrease')
+            $('#break-time').html(breakTime);
         }
-    })
-
-    $('#increase-time').click(function () {
-        currentMin += 5;
-        console.log(currentMin);
-        $('#current-min').html(currentMin);
-    })
-
-    // ------- Start timer (reset button will fade in) -----
-    $('#start-time').click(function () {
-        var updateSeconds = function (seconds) {
-            $('#current-sec').html(seconds);
-        }
-
-        var counter = setInterval(function timer() {
-            if (currentMin > 0) {
-                currentSec = 60;
-            }
-            if (currentSec > 0) {
-                currentSec--;
-            }
-            updateSeconds(currentSec);
-        }, 1000)
+    });
+    $('#increase-break').click(function () {
+        breakTime += 1;
+        $('#break-time').html(breakTime);
     });
 
-    // ------- Reset button will set time to default 20 ------
-    $('#reset-time').click(function () {
-        currentMin = "20";
-        $('#current-min').html(currentMin);
-    })
-
-
-    // ------- Increase / decrease BREAK TIME -----
-    $('#decrease-break').click(function () {
-        // Timer cannot be negative seconds
-        if (currentBreak > 0) {
-            currentBreak -= 5;
-            console.log(currentBreak);
-            $('#break-time').html(currentBreak);
+    // ---- Increase/decrease clock time ----
+    $('#decrease-clock').click(function () {
+        console.log(clockTime)
+        if (clockTime > 1) {
+            clockTime -= 1;
+            $('#clock-time').html(clockTime + ":00");
         }
+        minutes = clockTime;
+    })
+    $('#increase-clock').click(function () {
+        clockTime += 1;
+        $('#clock-time').html(clockTime + ":00");
+
     })
 
-    $('#increase-break').click(function () {
-        currentBreak += 5;
-        console.log(currentBreak);
-        $('#break-time').html(currentBreak);
+    // ---- Start the timer ----
+    function timerCountdown() {
+        console.log('breaktiem', breakTime)
+        if (!isPaused) {
+            if (minutes == 0 & seconds == 0) {
+                format(minutes, seconds);
+                // Timer continues
+            } else {
+                if (minutes > 0 && seconds === 0) {
+                    minutes--;
+                    seconds = 59;
+                    format(minutes, seconds)
+                } else {
+                    seconds--;
+                    format(minutes, seconds);
+                }
+            }
+        }
+        // ---- Format elapsed time ----
+        function format(min, sec) {
+            if (min < 10) {
+                min = "0" + min;
+            }
+            if (sec < 10) {
+                sec = "0" + sec;
+            }
+            $('#clock-time').html(min + ":" + sec)
+        }
+    }
+
+    // ---- Clock timer countdown ----
+    $('#start-btn').click(function () {
+        console.log('Pomodoro timer started.')
+        $('#adjust-clock').hide();
+        $('#start-btn').hide();
+        $('#timer-text').html("Pomodoro clock in session:");
+        // $('.controls').fadeOut();
+        $('#pause-btn').fadeIn()
+        var counter = setInterval(timerCountdown, 1000);
     })
 
+    // ---- Pause button ----
+    $('#pause-btn').click(function () {
+        isPaused = true;
+        console.log('Pause button was clicked')
+        $('#timer-text').html("Pomodoro clock has been paused.");
+        $('#continue-btn').show();
+        $('#pause-btn').hide();
+    })
+
+    // ---- Continue button ----
+    $('#continue-btn').click(function () {
+        isPaused = false;
+        console.log('continue button clicked')
+        $('#continue-btn').hide();
+        $('#pause-btn').show();
+    })
 });
