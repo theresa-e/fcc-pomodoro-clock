@@ -1,19 +1,17 @@
 $(document).ready(function () {
+    var defaultTime = 20;
     var breakTime = parseInt($('#break-time').html());
     var clockTime = parseInt($('#clock-time').html());
-    var minutes = clockTime;
+    var minutes = defaultTime;
     var seconds = 0;
     var isPaused = false;
-    var timerInProgress = false;
-
+    var earlyTermination = false;
     // ---- Hide elemenets on load -----
-    $('#reset-btn').hide();
-    $('#pause-btn').hide();
-    $('#continue-btn').hide();
+    $('#reset-btn, #pause-btn, #continue-btn, #end-btn').hide();
 
     // ---- Increase/decrease breaktime  -----
     $('#decrease-break').click(function () {
-        if (breakTime > 0) {
+        if (breakTime > 1) {
             breakTime -= 1;
             console.log('break decrease')
             $('#break-time').html(breakTime);
@@ -39,13 +37,13 @@ $(document).ready(function () {
 
     })
 
-    // ---- Start the timer ----
+    // ---- Countdown / format ----
     function timerCountdown() {
-        console.log('breaktiem', breakTime)
+        console.log('timerCountdown is running..')
         if (!isPaused) {
             if (minutes == 0 & seconds == 0) {
                 format(minutes, seconds);
-                // Timer continues
+                // -- Timer continues --
             } else {
                 if (minutes > 0 && seconds === 0) {
                     minutes--;
@@ -57,25 +55,34 @@ $(document).ready(function () {
                 }
             }
         }
-        // ---- Format elapsed time ----
-        function format(min, sec) {
-            if (min < 10) {
-                min = "0" + min;
-            }
-            if (sec < 10) {
-                sec = "0" + sec;
-            }
-            $('#clock-time').html(min + ":" + sec)
+        if (earlyTermination) {
+            isPaused = false;
+            clearInterval(timerCountdown);
+            earlyTermination = false;
+            minutes = defaultTime;
+            seconds = 0;
+            format(minutes, seconds);
         }
+
+    }
+    // ---- Format elapsed time ----
+    function format(min, sec) {
+        if (min < 10) {
+            min = "0" + min;
+        }
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        $('#clock-time').html(min + ":" + sec)
     }
 
-    // ---- Clock timer countdown ----
+    // ---- Start pomodoro countdown ----
     $('#start-btn').click(function () {
         console.log('Pomodoro timer started.')
-        $('#adjust-clock').hide();
-        $('#start-btn').hide();
+        console.log('Pomodoro timer AGAIN.')
+        $('.time-adjust').fadeOut();
+        $('#start-btn, .breaktime').hide();
         $('#timer-text').html("Pomodoro clock in session:");
-        // $('.controls').fadeOut();
         $('#pause-btn').fadeIn()
         var counter = setInterval(timerCountdown, 1000);
     })
@@ -85,15 +92,22 @@ $(document).ready(function () {
         isPaused = true;
         console.log('Pause button was clicked')
         $('#timer-text').html("Pomodoro clock has been paused.");
-        $('#continue-btn').show();
+        $('#continue-btn, #reset-btn').show();
         $('#pause-btn').hide();
     })
 
-    // ---- Continue button ----
+    // ---- Continue/unpause button ----
     $('#continue-btn').click(function () {
         isPaused = false;
-        console.log('continue button clicked')
-        $('#continue-btn').hide();
+        $('#timer-text').html("Pomodoro clock is in session:");
+        $('#continue-btn, #reset-btn').hide();
         $('#pause-btn').show();
+    })
+
+    // ---- Reset pomodoro clock ----
+    $('#reset-btn').click(function () {
+        earlyTermination = true;
+        $('#pause-btn, #continue-btn, #reset-btn').fadeOut();
+        $('#start-btn').fadeIn();
     })
 });

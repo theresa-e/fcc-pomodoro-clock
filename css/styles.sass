@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand')
 $font: "Quicksand"
 $background-col: #d0a3b1
-$body-gradient: linear-gradient(298deg, #D0B8AC 0%, #EFE5DC 100%)
 $control-col: #dcbfc1
 $btn-col: #d4cfc5
 $title-col: #802f49
+$drop-shadow: 10px 10px 50px -19px rgba(0,0,0,0.75)
+$body-gradient: linear-gradient(298deg, #D0B8AC 0%, #EFE5DC 100%)
+
 body
     margin: 0 auto
     font-family: $font
@@ -12,9 +14,17 @@ body
     height: 100vh
     display: flex
     align-items: center
-*
-    margin: 0
-    padding: 0
+    flex-direction: column
+
+h1
+    font-size: 2.5rem
+    color: $title-col
+    letter-spacing: 3px
+    font-weight: bold
+
+h2 
+    font-size: 1.5rem
+    color: $title-col
 
 .center 
     margin: 0 auto
@@ -30,19 +40,21 @@ body
     flex-direction: column
     justify-content: space-evenly
     border-radius: 15px
-    h1
-        font-size: 1.5rem
-        color: $title-col
-        text-transform: uppercase
-        letter-spacing: 3px
-        font-weight: bold
+    box-shadow: $drop-shadow
 
 .timer-title
     min-height: 40px
 
 .time-text
-    font-size: 8rem
-
+    font-size: 6rem
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    i
+        font-size: 2rem
+        display: block
+        
 .break-text
     font-size: 4rem
 
@@ -50,26 +62,43 @@ body
     background-color: $btn-col
     padding: 8px
     margin: 3px
-    font-size: .75rem
+    font-size: 1rem
     text-transform: uppercase
     border: none
     letter-spacing: 2px
+    border-radius: 5px
 
 .start
-    background-color: #cc9477
-    color: #763d1d
+    background-color: #819b7f
+    color: #1f381d
     &:hover
-        background: #d7a287
-        color: #763d1d
+        background: #8fa48d
+        color: #2b4329
+
+.pause
+    background-color: #cc7e7e
+    color: #765858
+    &:hover
+        background: #ce9191
+        color: #786464
+
+.continue
+    background-color: #d4d4a5
+    color: #838469
+    &:hover
+        background: #e1e1d0
+        color: #9e9f85
+
 .controls
     display: flex
     justify-content: space-around
     margin-top: 35px
     div        
-        background-color: $control-col
-        width: 100px
-        height: 100px
-        padding: 3px
+        padding: 10px 0px 15px 0px
+        width: 250px
+        border-radius: 5px
+        border: 1px solid #a7818e
+        min-height: 100px
 
 .clock-controls
     min-height: 30px
