@@ -1,21 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand')
-$font: "Quicksand"
-$background-col: #d0a3b1
+@import url('https://fonts.googleapis.com/css?family=Raleway')
+$font: "Raleway"
+$background-col: #d0a3a1
 $control-col: #dcbfc1
 $btn-col: #d4cfc5
 $title-col: #802f49
 $drop-shadow: 10px 10px 50px -19px rgba(0,0,0,0.75)
-$body-gradient: linear-gradient(298deg, #D0B8AC 0%, #EFE5DC 100%)
+$body-gradient: linear-gradient(298deg, #d1a1b1 0%, #EFE5DC 100%)
 
 body
     margin: 0 auto
-    font-family: $font
     background-image: $body-gradient
     height: 100vh
     display: flex
     align-items: center
     flex-direction: column
 
+*
+    font-family: $font
+    
 h1
     font-size: 2.5rem
     color: $title-col
@@ -33,9 +35,9 @@ h2
 .timer
     background-color: $background-col
     width: 50%
-    padding: 3%
+    padding: 1% 1% 5% 1%
     margin-top: 10px
-    height: 425px
+    height: 250px
     display: flex
     flex-direction: column
     justify-content: space-evenly
@@ -54,7 +56,10 @@ h2
     i
         font-size: 2rem
         display: block
-        
+
+.time-adjust
+    color: $title-col
+
 .break-text
     font-size: 4rem
 
@@ -83,10 +88,10 @@ h2
         color: #786464
 
 .continue
-    background-color: #d4d4a5
+    background-color: #c6c697
     color: #838469
     &:hover
-        background: #e1e1d0
+        background: #d4d4a5
         color: #9e9f85
 
 .controls
